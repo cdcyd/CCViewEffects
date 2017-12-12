@@ -232,6 +232,34 @@
             [self.superview insertSubview:view belowSubview:self];
             
             // view constraints
+            [self.superview addConstraints:@[[NSLayoutConstraint constraintWithItem:view
+                                                                          attribute:NSLayoutAttributeTop
+                                                                          relatedBy:NSLayoutRelationEqual
+                                                                             toItem:self
+                                                                          attribute:NSLayoutAttributeTop
+                                                                         multiplier:1.0
+                                                                           constant:0],
+                                             [NSLayoutConstraint constraintWithItem:view
+                                                                          attribute:NSLayoutAttributeLeft
+                                                                          relatedBy:NSLayoutRelationEqual
+                                                                             toItem:self
+                                                                          attribute:NSLayoutAttributeLeft
+                                                                         multiplier:1.0
+                                                                           constant:0],
+                                             [NSLayoutConstraint constraintWithItem:view
+                                                                          attribute:NSLayoutAttributeRight
+                                                                          relatedBy:NSLayoutRelationEqual
+                                                                             toItem:self
+                                                                          attribute:NSLayoutAttributeRight
+                                                                         multiplier:1.0
+                                                                           constant:0],
+                                             [NSLayoutConstraint constraintWithItem:view
+                                                                          attribute:NSLayoutAttributeBottom
+                                                                          relatedBy:NSLayoutRelationEqual
+                                                                             toItem:self
+                                                                          attribute:NSLayoutAttributeBottom
+                                                                         multiplier:1.0
+                                                                           constant:0]]];
             if (self.constraints.count > 0) {
                 [view setTranslatesAutoresizingMaskIntoConstraints:NO];
                 [view addConstraints:self.constraints];
