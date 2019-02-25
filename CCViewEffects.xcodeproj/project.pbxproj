@@ -7,13 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0D85EBD322240E74009989D0 /* UIView+Effects.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D85EBD222240E71009989D0 /* UIView+Effects.m */; };
 		D9B24C2D1F62395E00681D26 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B24C2C1F62395E00681D26 /* main.m */; };
 		D9B24C301F62395E00681D26 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B24C2F1F62395E00681D26 /* AppDelegate.m */; };
 		D9B24C331F62395E00681D26 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B24C321F62395E00681D26 /* ViewController.m */; };
 		D9B24C361F62395E00681D26 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9B24C341F62395E00681D26 /* Main.storyboard */; };
 		D9B24C381F62395E00681D26 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9B24C371F62395E00681D26 /* Assets.xcassets */; };
 		D9B24C3B1F62395E00681D26 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9B24C391F62395E00681D26 /* LaunchScreen.storyboard */; };
-		D9B24C441F62396C00681D26 /* UIView+Effects.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B24C431F62396C00681D26 /* UIView+Effects.m */; };
 		D9B24C471F623A0B00681D26 /* caes1.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B24C461F623A0B00681D26 /* caes1.m */; };
 		D9B24C4A1F623A1700681D26 /* case2.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B24C491F623A1700681D26 /* case2.m */; };
 		D9B24C4D1F623A2200681D26 /* case3.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B24C4C1F623A2200681D26 /* case3.m */; };
@@ -24,6 +24,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0D85EBD122240E71009989D0 /* UIView+Effects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Effects.h"; sourceTree = "<group>"; };
+		0D85EBD222240E71009989D0 /* UIView+Effects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Effects.m"; sourceTree = "<group>"; };
 		D9B24C281F62395E00681D26 /* CCViewEffects.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CCViewEffects.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9B24C2C1F62395E00681D26 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		D9B24C2E1F62395E00681D26 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -34,8 +36,6 @@
 		D9B24C371F62395E00681D26 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D9B24C3A1F62395E00681D26 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D9B24C3C1F62395E00681D26 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D9B24C421F62396C00681D26 /* UIView+Effects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Effects.h"; sourceTree = "<group>"; };
-		D9B24C431F62396C00681D26 /* UIView+Effects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Effects.m"; sourceTree = "<group>"; };
 		D9B24C451F623A0B00681D26 /* caes1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = caes1.h; sourceTree = "<group>"; };
 		D9B24C461F623A0B00681D26 /* caes1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = caes1.m; sourceTree = "<group>"; };
 		D9B24C481F623A1700681D26 /* case2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = case2.h; sourceTree = "<group>"; };
@@ -84,14 +84,14 @@
 			name = Cases;
 			sourceTree = "<group>";
 		};
-		0D85EBCE2224051B009989D0 /* ViewEffects */ = {
+		0D85EBD022240E71009989D0 /* ViewEffects */ = {
 			isa = PBXGroup;
 			children = (
-				D9B24C421F62396C00681D26 /* UIView+Effects.h */,
-				D9B24C431F62396C00681D26 /* UIView+Effects.m */,
+				0D85EBD122240E71009989D0 /* UIView+Effects.h */,
+				0D85EBD222240E71009989D0 /* UIView+Effects.m */,
 			);
 			path = ViewEffects;
-			sourceTree = "<group>";
+			sourceTree = SOURCE_ROOT;
 		};
 		D9B24C1F1F62395E00681D26 = {
 			isa = PBXGroup;
@@ -112,12 +112,12 @@
 		D9B24C2A1F62395E00681D26 /* CCViewEffects */ = {
 			isa = PBXGroup;
 			children = (
-				0D85EBCE2224051B009989D0 /* ViewEffects */,
+				0D85EBD022240E71009989D0 /* ViewEffects */,
+				0D22828C1FDFCE5E00803FD6 /* Cases */,
 				D9B24C2E1F62395E00681D26 /* AppDelegate.h */,
 				D9B24C2F1F62395E00681D26 /* AppDelegate.m */,
 				D9B24C311F62395E00681D26 /* ViewController.h */,
 				D9B24C321F62395E00681D26 /* ViewController.m */,
-				0D22828C1FDFCE5E00803FD6 /* Cases */,
 				D9B24C341F62395E00681D26 /* Main.storyboard */,
 				D9B24C371F62395E00681D26 /* Assets.xcassets */,
 				D9B24C391F62395E00681D26 /* LaunchScreen.storyboard */,
@@ -208,6 +208,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D9B24C561F623A4600681D26 /* case6.m in Sources */,
+				0D85EBD322240E74009989D0 /* UIView+Effects.m in Sources */,
 				D9B24C531F623A3A00681D26 /* case5.m in Sources */,
 				D9B24C4A1F623A1700681D26 /* case2.m in Sources */,
 				D9B24C4D1F623A2200681D26 /* case3.m in Sources */,
@@ -217,7 +218,6 @@
 				D9B24C471F623A0B00681D26 /* caes1.m in Sources */,
 				D9B24C2D1F62395E00681D26 /* main.m in Sources */,
 				D9B24C591F623A5200681D26 /* case7.m in Sources */,
-				D9B24C441F62396C00681D26 /* UIView+Effects.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
