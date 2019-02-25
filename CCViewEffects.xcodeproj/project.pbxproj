@@ -84,13 +84,13 @@
 			name = Cases;
 			sourceTree = "<group>";
 		};
-		0D85EBCE2224051B009989D0 /* CCViewEffects */ = {
+		0D85EBCE2224051B009989D0 /* ViewEffects */ = {
 			isa = PBXGroup;
 			children = (
 				D9B24C421F62396C00681D26 /* UIView+Effects.h */,
 				D9B24C431F62396C00681D26 /* UIView+Effects.m */,
 			);
-			path = CCViewEffects;
+			path = ViewEffects;
 			sourceTree = "<group>";
 		};
 		D9B24C1F1F62395E00681D26 = {
@@ -112,7 +112,7 @@
 		D9B24C2A1F62395E00681D26 /* CCViewEffects */ = {
 			isa = PBXGroup;
 			children = (
-				0D85EBCE2224051B009989D0 /* CCViewEffects */,
+				0D85EBCE2224051B009989D0 /* ViewEffects */,
 				D9B24C2E1F62395E00681D26 /* AppDelegate.h */,
 				D9B24C2F1F62395E00681D26 /* AppDelegate.m */,
 				D9B24C311F62395E00681D26 /* ViewController.h */,
