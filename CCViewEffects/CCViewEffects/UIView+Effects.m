@@ -178,15 +178,16 @@
     };
 }
 
+#pragma mark - 方法实现
 - (ClerVisual)clerVisual{
     return ^{
-        // 有阴影空视图
+        // 有阴影
         if (self.sBackgroundView) {
             [self.sBackgroundView removeFromSuperview];
             self.sBackgroundView = nil;
         }
         
-        // 有corner
+        // 有圆角
         if (self.cCorner > 0 && self.bColor) {
             for (CALayer *layer in self.layer.sublayers) {
                 [layer removeFromSuperlayer];
@@ -224,6 +225,7 @@
         // 阴影
         if (self.sOpacity>0 && self.cRadius > 0) {
             NSAssert(self.superview, @"在阴影和圆角同时存在时，必须先将view加载到父视图上");
+
             // view (阴影视图)
             UIView *view = [[UIView alloc] initWithFrame:self.frame];
             view.backgroundColor = [UIColor clearColor];
@@ -231,7 +233,7 @@
             [self addShadow:view];
             [self.superview insertSubview:view belowSubview:self];
             
-            // view constraints
+            // view (约束)
             [self.superview addConstraints:@[[NSLayoutConstraint constraintWithItem:view
                                                                           attribute:NSLayoutAttributeTop
                                                                           relatedBy:NSLayoutRelationEqual
@@ -264,10 +266,10 @@
                 [view setTranslatesAutoresizingMaskIntoConstraints:NO];
                 [view addConstraints:self.constraints];
             }
-        }
-        else{
+        } else {
             [self addShadow:self];
         }
+
         // 边框和圆角
         [self addBorderAndRadius:self];
         return self;
@@ -278,6 +280,7 @@
 -(CGRect)drawRect{
     return CGRectEqualToRect(CGRectZero, self.cBounds)?self.bounds:self.cBounds;
 }
+
 // 添加阴影
 -(void)addShadow:(UIView *)view{
     // 如果有圆角，用贝塞尔曲线绘制阴影路径
@@ -301,7 +304,6 @@
         UIBezierPath *path = [UIBezierPath bezierPathWithRoundedRect:[self drawRect]
                                                    byRoundingCorners:self.cCorner
                                                          cornerRadii:CGSizeMake(self.cRadius, self.cRadius)];
-        
         // 圆角
         if (self.cRadius > 0) {
             CAShapeLayer *maskLayer = [CAShapeLayer layer];
@@ -309,7 +311,6 @@
             maskLayer.path = path.CGPath;
             view.layer.mask = maskLayer;
         }
-        
         // 边框
         if (self.bWidth > 0) {
             CAShapeLayer *layer = [[CAShapeLayer alloc]init];
@@ -320,8 +321,7 @@
             layer.fillColor = [UIColor clearColor].CGColor;
             [view.layer addSublayer:layer];
         }
-    }
-    else{
+    } else {
         // 没有圆角时，直接添加边框
         view.layer.masksToBounds = true;
         view.layer.cornerRadius = self.cRadius;
