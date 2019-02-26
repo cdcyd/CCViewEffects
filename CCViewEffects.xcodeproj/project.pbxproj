@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0D85EBD322240E74009989D0 /* UIView+Effects.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D85EBD222240E71009989D0 /* UIView+Effects.m */; };
+		84633A75C2272BECC4614D40 /* Pods_CCViewEffects.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF3703CDB3AD030F59180BF6 /* Pods_CCViewEffects.framework */; };
 		D9B24C2D1F62395E00681D26 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B24C2C1F62395E00681D26 /* main.m */; };
 		D9B24C301F62395E00681D26 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B24C2F1F62395E00681D26 /* AppDelegate.m */; };
 		D9B24C331F62395E00681D26 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B24C321F62395E00681D26 /* ViewController.m */; };
@@ -26,6 +27,9 @@
 /* Begin PBXFileReference section */
 		0D85EBD122240E71009989D0 /* UIView+Effects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Effects.h"; sourceTree = "<group>"; };
 		0D85EBD222240E71009989D0 /* UIView+Effects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Effects.m"; sourceTree = "<group>"; };
+		0E2225A24842FE2AEF17328A /* Pods-CCViewEffects.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CCViewEffects.release.xcconfig"; path = "Target Support Files/Pods-CCViewEffects/Pods-CCViewEffects.release.xcconfig"; sourceTree = "<group>"; };
+		42613947D0CC57765FB40F6D /* Pods-CCViewEffects.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CCViewEffects.debug.xcconfig"; path = "Target Support Files/Pods-CCViewEffects/Pods-CCViewEffects.debug.xcconfig"; sourceTree = "<group>"; };
+		BF3703CDB3AD030F59180BF6 /* Pods_CCViewEffects.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CCViewEffects.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9B24C281F62395E00681D26 /* CCViewEffects.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CCViewEffects.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9B24C2C1F62395E00681D26 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		D9B24C2E1F62395E00681D26 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -57,6 +61,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84633A75C2272BECC4614D40 /* Pods_CCViewEffects.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -93,11 +98,31 @@
 			path = ViewEffects;
 			sourceTree = SOURCE_ROOT;
 		};
+		28109983B5D1454F100884F2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BF3703CDB3AD030F59180BF6 /* Pods_CCViewEffects.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B15156E06B9905E82C4E0F26 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				42613947D0CC57765FB40F6D /* Pods-CCViewEffects.debug.xcconfig */,
+				0E2225A24842FE2AEF17328A /* Pods-CCViewEffects.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		D9B24C1F1F62395E00681D26 = {
 			isa = PBXGroup;
 			children = (
 				D9B24C2A1F62395E00681D26 /* CCViewEffects */,
 				D9B24C291F62395E00681D26 /* Products */,
+				B15156E06B9905E82C4E0F26 /* Pods */,
+				28109983B5D1454F100884F2 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -142,9 +167,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D9B24C3F1F62395E00681D26 /* Build configuration list for PBXNativeTarget "CCViewEffects" */;
 			buildPhases = (
+				8DF513AD8F5CEBAAC523C8C1 /* [CP] Check Pods Manifest.lock */,
 				D9B24C241F62395E00681D26 /* Sources */,
 				D9B24C251F62395E00681D26 /* Frameworks */,
 				D9B24C261F62395E00681D26 /* Resources */,
+				5B0ECE576241FE18474AA47B /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -201,6 +228,49 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		5B0ECE576241FE18474AA47B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CCViewEffects/Pods-CCViewEffects-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Masonry/Masonry.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Masonry.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CCViewEffects/Pods-CCViewEffects-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8DF513AD8F5CEBAAC523C8C1 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CCViewEffects-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		D9B24C241F62395E00681D26 /* Sources */ = {
@@ -351,6 +421,7 @@
 		};
 		D9B24C401F62395E00681D26 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 42613947D0CC57765FB40F6D /* Pods-CCViewEffects.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 25AP33B4X5;
@@ -364,6 +435,7 @@
 		};
 		D9B24C411F62395E00681D26 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0E2225A24842FE2AEF17328A /* Pods-CCViewEffects.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 25AP33B4X5;
