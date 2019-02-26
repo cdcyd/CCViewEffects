@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "CCViewEffects"
-  s.version      = "1.0.2"
+  s.version      = "1.1.0"
   s.summary      = "Rounded corners, borders, shadows"
   s.license      = { :type => "MIT", :file => "LICENSE" }
   s.homepage     = "https://github.com/cdcyd/CCViewEffects"
@@ -20,7 +20,7 @@ Pod::Spec.new do |s|
   s.author                  = { "cyd" => "1035060416@qq.com" }
   s.social_media_url        = "https://cdcyd.github.io/"
   s.ios.deployment_target   = "8.0"
-  s.source                  = { :git => "https://github.com/cdcyd/CCViewEffects.git", :tag => "v1.0.2" }
+  s.source                  = { :git => "https://github.com/cdcyd/CCViewEffects.git", :tag => "v1.1.0" }
   s.source_files            = 'ViewEffects'
   s.public_header_files     = 'ViewEffects/*.h'
 
