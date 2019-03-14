@@ -8,18 +8,19 @@
 
 #import <UIKit/UIKit.h>
 
-typedef UIView *(^ConrnerCorner) (UIRectCorner corner );
-typedef UIView *(^ConrnerRadius) (CGFloat      radius );
+typedef UIView *(^ConrnerCorner) (UIRectCorner  corner );
+typedef UIView *(^ConrnerRadius) (CGFloat       radius );
 
-typedef UIView *(^BorderColor  ) (UIColor      *color );
-typedef UIView *(^BorderWidth  ) (CGFloat      width  );
+typedef UIView *(^BorderColor  ) (UIColor      *color  );
+typedef UIView *(^BorderWidth  ) (CGFloat       width  );
 
-typedef UIView *(^ShadowColor  ) (UIColor      *color );
-typedef UIView *(^ShadowOffset ) (CGSize       size   );
-typedef UIView *(^ShadowRadius ) (CGFloat      radius );
-typedef UIView *(^ShadowOpacity) (CGFloat      opacity);
+typedef UIView *(^ShadowColor  ) (UIColor      *color  );
+typedef UIView *(^ShadowOffset ) (CGSize        size   );
+typedef UIView *(^ShadowRadius ) (CGFloat       radius );
+typedef UIView *(^ShadowOpacity) (CGFloat       opacity);
 
-typedef UIView *(^BezierPath) (UIBezierPath    *path  );
+typedef UIView *(^BezierPath) (UIBezierPath    *path   );
+typedef UIView *(^ViewBounds) (CGRect           rect   );
 
 typedef UIView *(^ShowVisual) (void);
 typedef UIView *(^ClerVisual) (void);
@@ -45,6 +46,7 @@ typedef UIView *(^ClerVisual) (void);
 
 // 路径
 @property(nonatomic, strong, readonly)BezierPath bezierPath; // 贝塞尔路径 默认 nil (有值时，radius属性将失效)
+@property(nonatomic, strong, readonly)ViewBounds viewBounds; // 设置圆角时，会去获取视图的bounds属性，如果此时获取不到，则需要传入该参数，默认为 nil，如果传入该参数，则不会去回去视图的bounds属性了
 
 // 调用
 @property(nonatomic, strong, readonly)ShowVisual showVisual; // 展示

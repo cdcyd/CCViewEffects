@@ -22,6 +22,7 @@
 #define kShadowColor    "UIView.privateShadowColor"
 
 #define kBezierPath     "UIView.privateBezierPath"
+#define kViewBounds     "UIView.privateViewBounds"
 
 #define kBackgroundView "UIView.BackgroundView"
 
@@ -36,7 +37,8 @@
          shadowOpacity,
          showVisual,
          clerVisual,
-         bezierPath;
+         bezierPath,
+         viewBounds;
 
 #pragma mark - 添加私有属性
 // mark - 圆角 矩形 默认 AllCorners
@@ -129,6 +131,16 @@
     return path ? path : nil;
 }
 
+// mark - 视图 大小 默认 nil
+- (void)setPrivateViewBounds:(CGRect)rect {
+    objc_setAssociatedObject(self, kViewBounds, NSStringFromCGRect(rect), OBJC_ASSOCIATION_COPY_NONATOMIC);
+}
+
+- (CGRect)privateViewBounds {
+    id path = objc_getAssociatedObject(self, kViewBounds);
+    return path ? CGRectFromString(path) : CGRectZero;
+}
+
 // 阴影空视图，只在有圆角的时候使用
 - (UIView *)shadowBackgroundView {
     return objc_getAssociatedObject(self, kBackgroundView);
@@ -202,41 +214,49 @@
     };
 }
 
+- (ViewBounds)viewBounds {
+    return ^(CGRect rect) {
+        self.privateViewBounds = rect;
+        return self;
+    };
+}
+
 #pragma mark - 方法实现
 - (ClerVisual)clerVisual {
     return ^{
-        // 阴影背景图
+        // 阴影
         if (self.shadowBackgroundView) {
             [self.shadowBackgroundView removeFromSuperview];
             self.shadowBackgroundView = nil;
         }
         
-        // 圆角和边框
+        // 圆角、边框
         for (CALayer *layer in self.layer.sublayers) {
             if ([layer.name isEqualToString:@"CCViewEffects"]) {
                 [layer removeFromSuperlayer];
             }
         }
         
-        // 这里全部清零，默认值在getter方法中设置
-        self.privateConrnerCorner = 0;
-        self.privateConrnerRadius = 0;
-        self.privateBorderColor   = nil;
-        self.privateBorderWidth   = 0;
-        self.privateShadowOpacity = 0;
-        self.privateShadowRadius  = 0;
+        // 恢复默认设置
+        self.privateConrnerCorner = UIRectCornerAllCorners;
+        self.privateConrnerRadius = 0.0;
+        self.privateBorderColor   = [UIColor blackColor];
+        self.privateBorderWidth   = 0.0;
+        self.privateShadowOpacity = 0.0;
+        self.privateShadowRadius  = 0.0;
         self.privateShadowOffset  = CGSizeZero;
-        self.privateShadowColor   = nil;
+        self.privateViewBounds    = CGRectZero;
+        self.privateShadowColor   = [UIColor blackColor];
         self.shadowBackgroundView = nil;
         
         self.layer.masksToBounds  = NO;
-        self.layer.cornerRadius   = 0;
-        self.layer.borderWidth    = 0;
+        self.layer.cornerRadius   = 0.0;
+        self.layer.borderWidth    = 0.0;
         self.layer.borderColor    = [UIColor blackColor].CGColor;
-        self.layer.shadowOpacity  = 0;
+        self.layer.shadowOpacity  = 0.0;
         self.layer.shadowPath     = nil;
-        self.layer.shadowRadius   = 0;
-        self.layer.shadowColor    = nil;
+        self.layer.shadowRadius   = 0.0;
+        self.layer.shadowColor    = [UIColor blackColor].CGColor;
         self.layer.shadowOffset   = CGSizeZero;
         self.layer.mask           = nil;
         return self;
@@ -247,17 +267,32 @@
     return ^{
         // 阴影
         [self addShadow];
-        // 边框和圆角
+        // 边框、圆角
         [self addBorderAndRadius];
         return self;
     };
 }
 
 #pragma mark - Private methods
--(CGRect)drawRect {
-    NSAssert(self.superview, @"添加圆角时，请先将view加到父视图上");
-    [self.superview layoutIfNeeded];
+-(CGRect)drawBounds {
+    // 1.如果传入了大小，则直接返回
+    if (!CGRectEqualToRect(self.privateViewBounds, CGRectZero)) {
+        return self.privateViewBounds;
+    }
+    // 2.获取在自动布局时的视图大小
+    if (self.superview != nil) {
+        [self.superview layoutIfNeeded];
+    }
     return self.bounds;
+}
+
+-(UIBezierPath *)drawBezierPath {
+    if (self.privateBezierPath != nil) {
+        return self.privateBezierPath;
+    }
+    return [UIBezierPath bezierPathWithRoundedRect:[self drawBounds]
+                                 byRoundingCorners:self.privateConrnerCorner
+                                       cornerRadii:CGSizeMake(self.privateConrnerRadius, self.privateConrnerRadius)];
 }
 
 // 添加阴影
@@ -265,6 +300,10 @@
     UIView *shadowView = self;
     // 同时存在阴影和圆角
     if ((self.privateShadowOpacity > 0 && self.privateConrnerRadius > 0) || self.privateBezierPath) {
+        if (self.shadowBackgroundView) {
+            [self.shadowBackgroundView removeFromSuperview];
+            self.shadowBackgroundView = nil;
+        }
         NSAssert(self.superview, @"添加阴影和圆角时，请先将view加到父视图上");
         shadowView = [[UIView alloc] initWithFrame:self.frame];
         shadowView.translatesAutoresizingMaskIntoConstraints = NO;
@@ -301,15 +340,10 @@
     }
     // 圆角
     if (self.privateConrnerRadius > 0 || self.privateBezierPath) {
-        UIBezierPath *shadowPath = self.privateBezierPath;
-        if (shadowPath == nil) {
-            shadowPath = [UIBezierPath bezierPathWithRoundedRect:[self drawRect]
-                                               byRoundingCorners:self.privateConrnerCorner
-                                                     cornerRadii:CGSizeMake(self.privateConrnerRadius, self.privateConrnerRadius)];
-        }
+        UIBezierPath *shadowPath = [self drawBezierPath];
         shadowView.layer.shadowPath = shadowPath.CGPath;
     }
-    // 设置阴影
+    // 阴影
     shadowView.layer.masksToBounds = NO;
     shadowView.layer.shadowOpacity = self.privateShadowOpacity;
     shadowView.layer.shadowRadius  = self.privateShadowRadius;
@@ -319,17 +353,11 @@
 
 // 添加圆角和边框
 -(void)addBorderAndRadius {
-    // 有圆角或者有阴影
+    // 圆角或阴影或自定义曲线
     if (self.privateConrnerRadius > 0 || self.privateShadowOpacity > 0 || self.privateBezierPath) {
-        // 圆角和边框的贝塞尔曲线
-        UIBezierPath *path = self.privateBezierPath;
-        if (path == nil) {
-            path = [UIBezierPath bezierPathWithRoundedRect:[self drawRect]
-                                         byRoundingCorners:self.privateConrnerCorner
-                                               cornerRadii:CGSizeMake(self.privateConrnerRadius, self.privateConrnerRadius)];
-        }
         // 圆角
         if (self.privateConrnerRadius > 0 || self.privateBezierPath) {
+            UIBezierPath *path = [self drawBezierPath];
             CAShapeLayer *maskLayer = [CAShapeLayer layer];
             maskLayer.frame = self.bounds;
             maskLayer.path  = path.CGPath;
@@ -337,6 +365,12 @@
         }
         // 边框
         if (self.privateBorderWidth > 0 || self.privateBezierPath) {
+            for (CALayer *layer in self.layer.sublayers) {
+                if ([layer.name isEqualToString:@"CCViewEffects"]) {
+                    [layer removeFromSuperlayer];
+                }
+            }
+            UIBezierPath *path = [self drawBezierPath];
             CAShapeLayer *layer = [[CAShapeLayer alloc]init];
             layer.name  = @"CCViewEffects";
             layer.frame = self.bounds;
@@ -347,7 +381,7 @@
             [self.layer addSublayer:layer];
         }
     } else {
-        // 没有圆角和阴影
+        // 只有边框
         self.layer.masksToBounds = true;
         self.layer.borderWidth   = self.privateBorderWidth;
         self.layer.borderColor   = self.privateBorderColor.CGColor;

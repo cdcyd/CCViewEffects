@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0D85EBD322240E74009989D0 /* UIView+Effects.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D85EBD222240E71009989D0 /* UIView+Effects.m */; };
+		0DAEB370223A20C30055E4F7 /* case8.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DAEB36F223A20C30055E4F7 /* case8.m */; };
 		84633A75C2272BECC4614D40 /* Pods_CCViewEffects.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF3703CDB3AD030F59180BF6 /* Pods_CCViewEffects.framework */; };
 		D9B24C2D1F62395E00681D26 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B24C2C1F62395E00681D26 /* main.m */; };
 		D9B24C301F62395E00681D26 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B24C2F1F62395E00681D26 /* AppDelegate.m */; };
@@ -27,6 +28,8 @@
 /* Begin PBXFileReference section */
 		0D85EBD122240E71009989D0 /* UIView+Effects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Effects.h"; sourceTree = "<group>"; };
 		0D85EBD222240E71009989D0 /* UIView+Effects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Effects.m"; sourceTree = "<group>"; };
+		0DAEB36E223A20C30055E4F7 /* case8.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = case8.h; sourceTree = "<group>"; };
+		0DAEB36F223A20C30055E4F7 /* case8.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = case8.m; sourceTree = "<group>"; };
 		0E2225A24842FE2AEF17328A /* Pods-CCViewEffects.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CCViewEffects.release.xcconfig"; path = "Target Support Files/Pods-CCViewEffects/Pods-CCViewEffects.release.xcconfig"; sourceTree = "<group>"; };
 		42613947D0CC57765FB40F6D /* Pods-CCViewEffects.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CCViewEffects.debug.xcconfig"; path = "Target Support Files/Pods-CCViewEffects/Pods-CCViewEffects.debug.xcconfig"; sourceTree = "<group>"; };
 		BF3703CDB3AD030F59180BF6 /* Pods_CCViewEffects.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CCViewEffects.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -85,6 +88,8 @@
 				D9B24C551F623A4600681D26 /* case6.m */,
 				D9B24C571F623A5200681D26 /* case7.h */,
 				D9B24C581F623A5200681D26 /* case7.m */,
+				0DAEB36E223A20C30055E4F7 /* case8.h */,
+				0DAEB36F223A20C30055E4F7 /* case8.m */,
 			);
 			name = Cases;
 			sourceTree = "<group>";
@@ -112,7 +117,6 @@
 				42613947D0CC57765FB40F6D /* Pods-CCViewEffects.debug.xcconfig */,
 				0E2225A24842FE2AEF17328A /* Pods-CCViewEffects.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -283,6 +287,7 @@
 				D9B24C4A1F623A1700681D26 /* case2.m in Sources */,
 				D9B24C4D1F623A2200681D26 /* case3.m in Sources */,
 				D9B24C501F623A2D00681D26 /* case4.m in Sources */,
+				0DAEB370223A20C30055E4F7 /* case8.m in Sources */,
 				D9B24C331F62395E00681D26 /* ViewController.m in Sources */,
 				D9B24C301F62395E00681D26 /* AppDelegate.m in Sources */,
 				D9B24C471F623A0B00681D26 /* caes1.m in Sources */,

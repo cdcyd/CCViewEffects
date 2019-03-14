@@ -28,7 +28,8 @@
                         @"圆角+边框.case4",
                         @"圆角+阴影.case5",
                         @"边框+阴影.case6",
-                        @"圆角+边框+阴影.case7"];
+                        @"圆角+边框+阴影.case7",
+                        @"issue.case8"];
     [self.view addSubview:self.tableView];
 }
 
